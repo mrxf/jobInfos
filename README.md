@@ -1,0 +1,2 @@
+# jobInfos
+一个基于Node的自动抓取招聘网站信息进行分析的WebApp
