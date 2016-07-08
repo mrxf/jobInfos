@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/info', function(req, res, next) {
   var info = {
     username : 'trinity',
-    password : 'girlisyou'
+    password : 'shy'
   }
   res.json(info);
 });
