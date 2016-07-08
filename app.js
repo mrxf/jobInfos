@@ -11,13 +11,13 @@ var users = require('./routes/users');
 
 var app = express();
 
-// view engine setup
+// 设置handlebars为默认引擎，视图目录为views
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars',handlebars.engine);
 app.set('view engine', 'handlebars');
 
 
-// uncomment after placing your favicon in /public
+// 当将favicon 放在 /public目录下之后，就取消注释下面代码
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -25,20 +25,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//设置路由
 app.use('/', routes);
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+// 捕获404 Notfound错误
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
+//错误处理器
+//如果是在开发环境下
+//就会直接使用error模板打印错误信息
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -49,8 +49,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+//项目错误捕获器
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
