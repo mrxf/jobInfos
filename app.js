@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -27,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //设置路由
 app.use('/', routes);
-app.use('/users', users);
 
 // 捕获404 Notfound错误
 app.use(function(req, res, next) {
