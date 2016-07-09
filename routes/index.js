@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/spider',function (req, res, next) {
-	res.json(spider.getinfo());
+	res.render('spider',{jobinfo : JSON.stringify(spider.getinfo())})
 })
 
 module.exports = router;
