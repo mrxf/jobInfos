@@ -12,6 +12,7 @@ function getinfo() {
 		var html = "";
 		res.on('data',function(chunk){
 			html+=chunk;
+			
 		})
 		res.on("end",function(){
 			jobinfo = JSON.parse(html);
